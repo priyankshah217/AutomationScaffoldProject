@@ -3,8 +3,6 @@ package scaffold.utils;
 import scaffold.exceptions.NoPageObjectFoundExceptions;
 import scaffold.pages.base.AbstractPage;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class PageUtil {
     private final static String platformName = CommonUtils.getPlatformName.get();
 
@@ -17,7 +15,7 @@ public class PageUtil {
         try {
             final Class<?> derivedClass = Class.forName(derivedClassName);
             return (T) derivedClass.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw new NoPageObjectFoundExceptions(tClass + " No Page object found exception");
         }
