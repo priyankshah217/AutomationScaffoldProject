@@ -6,11 +6,11 @@ import scaffold.pages.base.AbstractPage;
 import java.lang.reflect.InvocationTargetException;
 
 public class PageUtil {
+    final static String platformName = CommonUtils.getPlatformName();
 
     @SuppressWarnings("unchecked")
     public static <T extends AbstractPage> T getPage(Class<T> tClass) {
         final String defaultPackageName = "scaffold.pages";
-        final String platformName = CommonUtils.getPlatformName();
         final String derivedClassName = defaultPackageName + "."
                                         + platformName.toLowerCase() + "."
                                         + tClass.getSimpleName() + platformName;
